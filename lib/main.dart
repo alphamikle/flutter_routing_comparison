@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:navigator_comparison/constants/constants.dart';
-import 'package:navigator_comparison/main_view/main_view.dart';
+import 'package:navigator_comparison/app/go_router_app.dart';
+import 'package:navigator_comparison/app/navigator_router_app.dart';
+import 'package:navigator_comparison/app/vrouter_app.dart';
+import 'package:navigator_comparison/routing/app_router.dart';
+import 'package:navigator_comparison/routing/go_router_router.dart';
+import 'package:navigator_comparison/routing/navigator_router.dart';
+import 'package:navigator_comparison/routing/routing_type.dart';
+import 'package:navigator_comparison/routing/vrouter_router.dart';
 
-void main() {
-  runApp(const NavigatorComparator());
+AppRouter routerFactory(BuildContext context) {
+  return {
+    RouterType.navigatorRouter: NavigatorRouter(context),
+    RouterType.vRouter: VRouterRouter(context),
+    RouterType.goRouter: GoRouterRouter(context),
+  }[routerType]!;
 }
 
-class NavigatorComparator extends StatelessWidget {
-  const NavigatorComparator({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: kAppTitle,
-      home: MainView(
-        activeTabIndex: 0,
-      ),
-    );
-  }
+void main() {
+  runApp({
+    RouterType.navigatorRouter: const NavigatorRouterApp(routerFactory: routerFactory),
+    RouterType.vRouter: const VRouterApp(routerFactory: routerFactory),
+    RouterType.goRouter: const GoRouterApp(routerFactory: routerFactory),
+  }[routerType]!);
 }
