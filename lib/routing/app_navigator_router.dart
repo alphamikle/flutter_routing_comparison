@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:navigator_comparison/routing/app_router.dart';
 
-class NavigatorRouter extends AppRouter {
-  NavigatorRouter(this.context);
+class AppNavigatorRouter extends AppRouter {
+  AppNavigatorRouter(this.context);
 
   final BuildContext context;
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:navigator_comparison/routing/app_router.dart';
 
-class GoRouterRouter extends AppRouter {
-  GoRouterRouter(this.context);
+class AppGoRouter extends AppRouter {
+  AppGoRouter(this.context);
 
   final BuildContext context;
 

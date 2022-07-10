@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:navigator_comparison/app/go_router_app.dart';
 import 'package:navigator_comparison/app/navigator_router_app.dart';
 import 'package:navigator_comparison/app/vrouter_app.dart';
+import 'package:navigator_comparison/routing/app_go_router.dart';
+import 'package:navigator_comparison/routing/app_navigator_router.dart';
 import 'package:navigator_comparison/routing/app_router.dart';
-import 'package:navigator_comparison/routing/go_router_router.dart';
-import 'package:navigator_comparison/routing/navigator_router.dart';
-import 'package:navigator_comparison/routing/routing_type.dart';
-import 'package:navigator_comparison/routing/vrouter_router.dart';
+import 'package:navigator_comparison/routing/app_vrouter.dart';
+import 'package:navigator_comparison/routing/router_type.dart';
 
 AppRouter routerFactory(BuildContext context) {
   return {
-    RouterType.navigatorRouter: NavigatorRouter(context),
-    RouterType.vRouter: VRouterRouter(context),
-    RouterType.goRouter: GoRouterRouter(context),
+    RouterType.navigatorRouter: AppNavigatorRouter(context),
+    RouterType.vRouter: AppVRouter(context),
+    RouterType.goRouter: AppGoRouter(context),
   }[routerType]!;
 }
 
