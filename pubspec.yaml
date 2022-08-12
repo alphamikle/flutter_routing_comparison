@@ -12,6 +12,10 @@ dependencies:
   material_design_icons_flutter: ^5.0.6595
   vrouter: ^1.2.1
   go_router: ^4.1.0
+  bloc: ^8.1.0
+  flutter_bloc: ^8.0.1
+  flutter_markdown: ^0.6.10+3
+  markdown: ^5.0.0 # the same version at flutter_markdown
 
 dev_dependencies:
   flutter_test:
