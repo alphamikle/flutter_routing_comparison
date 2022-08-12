@@ -16,6 +16,7 @@ dependencies:
   flutter_bloc: ^8.0.1
   flutter_markdown: ^0.6.10+3
   markdown: ^5.0.0 # the same version at flutter_markdown
+  device_frame: ^1.1.0
 
 dev_dependencies:
   flutter_test:

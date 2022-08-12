@@ -38,7 +38,7 @@ class RootView extends StatelessWidget {
               activeIcon: Icon(MdiIcons.account),
             ),
           ],
-          onTap: (int index) => context.vRouter.toNamed(RoutesList.rootRoutes[index].name, isReplacement: true),
+          onTap: (int index) => state.index == index ? null : context.vRouter.toNamed(RoutesList.rootRoutes[index].name, isReplacement: true),
         ),
       ),
       body: child,
