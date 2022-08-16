@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:navigator_comparison/vrouter_app/domain/auth_view/auth_view.dart';
 import 'package:navigator_comparison/vrouter_app/domain/home_details_view/home_details_view.dart';
 import 'package:navigator_comparison/vrouter_app/domain/home_view/home_view.dart';
+import 'package:navigator_comparison/vrouter_app/domain/image_view/image_view.dart';
 import 'package:navigator_comparison/vrouter_app/domain/not_found_view/not_found_view.dart';
 import 'package:navigator_comparison/vrouter_app/domain/profile_view/profile_view.dart';
 import 'package:navigator_comparison/vrouter_app/domain/root_view/bloc/root_view_bloc.dart';
@@ -23,10 +23,7 @@ List<VRouteElement> routesMapping({
     VNester(
       path: RoutesList.root.path,
       name: RoutesList.root.name,
-      widgetBuilder: (Widget child) => BlocProvider.value(
-        value: rootViewBloc,
-        child: RootView(child: child),
-      ),
+      widgetBuilder: (Widget child) => RootView(child: child),
       nestedRoutes: [
         VWidget(
           path: RoutesList.home.path,
@@ -73,9 +70,13 @@ List<VRouteElement> routesMapping({
     VWidget(
       path: RoutesList.auth.path,
       name: RoutesList.auth.name,
-      widget: BlocProvider.value(
-        value: rootViewBloc,
-        child: const AuthView(),
+      widget: const AuthView(),
+    ),
+    VWidget.builder(
+      path: RoutesList.imageDetails.path,
+      name: RoutesList.imageDetails.name,
+      builder: (BuildContext context, VRouterData data) => ImageView(
+        imagePath: data.pathParameters[SegmentsList.imagePath.name] ?? '',
       ),
     ),
     VWidget(

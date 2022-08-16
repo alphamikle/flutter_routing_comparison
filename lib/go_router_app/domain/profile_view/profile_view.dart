@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:navigator_comparison/common/common_button.dart';
 import 'package:navigator_comparison/common/common_image.dart';
 import 'package:navigator_comparison/common/common_route_viewer.dart';
-import 'package:navigator_comparison/vrouter_app/service/routing/routes_list.dart';
-import 'package:vrouter/vrouter.dart';
+import 'package:navigator_comparison/go_router_app/service/routing/routes_list.dart';
 
-class NotFoundView extends StatelessWidget {
-  const NotFoundView({super.key});
+class ProfileView extends StatelessWidget {
+  const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Not found'),
+        title: const Text('Profile'),
       ),
-      backgroundColor: Color.lerp(const Color.fromRGBO(39, 125, 161, 1), Colors.white, 0.90),
+      backgroundColor: Color.lerp(const Color.fromRGBO(67, 170, 139, 1), Colors.white, 0.90),
       body: ListView(
         children: [
-          const CommonImage(setNumber: 5),
+          const CommonImage(),
           CommonButton(
-            title: 'Go to home',
-            onPressed: () => context.vRouter.to(RoutesList.root.path),
+            title: 'Go to auth',
+            onPressed: () => context.goNamed(RoutesList.auth.name),
           ),
           const CommonRouteViewer(),
         ],
