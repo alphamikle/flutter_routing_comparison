@@ -34,8 +34,8 @@ List<VRouteElement> routesMapping({
               beforeEnter: (VRedirector vRedirector) async {
                 if (!rootViewBloc.state.isAuthorized) {
                   final BuildContext context = rootKey.currentContext!;
-                  final String? fromUrl = vRedirector.fromUrl;
-                  vRedirector.to('${RoutesList.auth.path}${fromUrl == null ? '' : '?go_back_to=$fromUrl'}');
+                  vRedirector.toNamed(RoutesList.auth.name);
+
                   ScaffoldMessenger.of(context).hideCurrentSnackBar();
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(

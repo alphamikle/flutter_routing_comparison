@@ -44,7 +44,6 @@ GoRouter routesMapping({
               path: RoutesList.homeDetails.subRoute!,
               builder: (BuildContext context, GoRouterState state) => const HomeDetailsView(),
               redirect: (GoRouterState state) {
-                // final String? fromUrl = goRouterObserver.previousRoute?.settings.name;
                 if (!rootViewBloc.state.isAuthorized) {
                   return RoutesList.auth.path;
                 }
