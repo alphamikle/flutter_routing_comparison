@@ -23,7 +23,7 @@ class AuthView extends StatelessWidget {
       backgroundColor: Color.lerp(const Color.fromRGBO(249, 65, 68, 1), Colors.white, 0.90),
       body: ListView(
         children: [
-          const CommonImage(),
+          const CommonImage(setNumber: 4),
           BlocBuilder<RootViewBloc, RootViewState>(
             builder: (BuildContext context, RootViewState state) => CommonButton(
               title: state.isAuthorized ? 'Authorized' : 'Sign In${goBackTo == null ? '' : ' and go to "$goBackTo"'}',

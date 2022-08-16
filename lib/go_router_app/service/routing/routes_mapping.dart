@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:navigator_comparison/go_router_app/domain/auth_view/auth_view.dart';
 import 'package:navigator_comparison/go_router_app/domain/home_details_view/home_details_view.dart';
@@ -9,18 +8,15 @@ import 'package:navigator_comparison/go_router_app/domain/root_view/bloc/root_vi
 import 'package:navigator_comparison/go_router_app/domain/root_view/bloc/root_view_event.dart';
 import 'package:navigator_comparison/go_router_app/domain/root_view/root_view.dart';
 import 'package:navigator_comparison/go_router_app/domain/settings_view/settings_view.dart';
-import 'package:navigator_comparison/go_router_app/service/routing/go_router_observer.dart';
+import 'package:navigator_comparison/go_router_app/service/routing/pop_scoped_go_route.dart';
 import 'package:navigator_comparison/go_router_app/service/routing/routes_list.dart';
+import 'package:navigator_comparison/vrouter_app/domain/image_view/image_view.dart';
 
 GoRouter routesMapping({
   required RootViewBloc rootViewBloc,
-  required GoRouterObserver goRouterObserver,
+  required GoRouteWillPopCallback willPopCallback,
 }) =>
     GoRouter(
-      debugLogDiagnostics: true,
-      observers: [
-        goRouterObserver,
-      ],
       routes: <GoRoute>[
         GoRoute(
           path: RoutesList.root.path,
@@ -38,12 +34,9 @@ GoRouter routesMapping({
             };
 
             rootViewBloc.add(RootViewNavigationEvent(tabId: tabId));
-            return BlocProvider.value(
-              value: rootViewBloc,
-              child: RootView(
-                key: ValueKey(tabId),
-                child: tabs[tabId]!,
-              ),
+            return RootView(
+              key: ValueKey(tabId),
+              child: tabs[tabId]!,
             );
           },
           routes: [
@@ -51,6 +44,7 @@ GoRouter routesMapping({
               path: RoutesList.homeDetails.subRoute!,
               builder: (BuildContext context, GoRouterState state) => const HomeDetailsView(),
               redirect: (GoRouterState state) {
+                // final String? fromUrl = goRouterObserver.previousRoute?.settings.name;
                 if (!rootViewBloc.state.isAuthorized) {
                   return RoutesList.auth.path;
                 }
@@ -62,9 +56,13 @@ GoRouter routesMapping({
         GoRoute(
           path: RoutesList.auth.path,
           name: RoutesList.auth.name,
-          builder: (BuildContext context, GoRouterState state) => BlocProvider.value(
-            value: rootViewBloc,
-            child: const AuthView(),
+          builder: (BuildContext context, GoRouterState state) => const AuthView(),
+        ),
+        GoRoute(
+          path: RoutesList.imageDetails.path,
+          name: RoutesList.imageDetails.name,
+          builder: (BuildContext context, GoRouterState state) => ImageView(
+            imagePath: state.params[SegmentsList.imagePath.name] ?? '',
           ),
         ),
 
@@ -89,5 +87,5 @@ GoRouter routesMapping({
           name: RoutesList.homeDetails.name,
           redirect: (_) => null,
         ),
-      ],
+      ].map((GoRoute route) => route.convertToPopScoped(willPopCallback)).toList(),
     );

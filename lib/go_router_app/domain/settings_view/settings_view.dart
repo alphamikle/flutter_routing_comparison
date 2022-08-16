@@ -17,10 +17,10 @@ class SettingsView extends StatelessWidget {
       backgroundColor: Color.lerp(const Color.fromRGBO(249, 199, 79, 1), Colors.white, 0.90),
       body: ListView(
         children: [
-          const CommonImage(),
+          const CommonImage(setNumber: 1),
           CommonButton(
-            title: 'Go to home details',
-            onPressed: () => context.goNamed(RoutesList.homeDetails.name),
+            title: 'Go to "${RoutesList.homeDetails.path}"',
+            onPressed: () => context.pushNamed(RoutesList.homeDetails.name),
           ),
           const CommonRouteViewer(),
         ],

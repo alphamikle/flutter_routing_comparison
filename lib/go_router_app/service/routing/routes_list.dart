@@ -7,6 +7,8 @@ abstract class RoutesList {
   static const RouteInfo auth = RouteInfo('/auth', 'auth');
   static const RouteInfo homeDetails = RouteInfo('/home/details', 'home details', 'details');
 
+  static final RouteInfo imageDetails = RouteInfo('/image/${SegmentsList.imagePath.id}', 'image details');
+
   static const List<RouteInfo> rootRoutes = [
     home,
     settings,
@@ -27,6 +29,7 @@ class RouteInfo {
 
 abstract class SegmentsList {
   static const SegmentId tab = SegmentId('tabId');
+  static const SegmentId imagePath = SegmentId('imagePath');
 }
 
 class SegmentId {

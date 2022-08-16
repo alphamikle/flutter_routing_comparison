@@ -16,9 +16,9 @@ class HomeDetailsView extends StatelessWidget {
       backgroundColor: Color.lerp(const Color.fromRGBO(243, 114, 44, 1), Colors.white, 0.90),
       body: ListView(
         children: [
-          const CommonImage(),
+          const CommonImage(setNumber: 3),
           CommonButton(
-            title: 'Go back to',
+            title: 'Go back to previous view',
             onPressed: () => GoRouter.of(context).pop(),
           ),
           const CommonRouteViewer(),

@@ -17,10 +17,10 @@ class ProfileView extends StatelessWidget {
       backgroundColor: Color.lerp(const Color.fromRGBO(67, 170, 139, 1), Colors.white, 0.90),
       body: ListView(
         children: [
-          const CommonImage(),
+          const CommonImage(setNumber: 2),
           CommonButton(
-            title: 'Go to auth',
-            onPressed: () => context.goNamed(RoutesList.auth.name),
+            title: 'Go to "${RoutesList.auth.path}"',
+            onPressed: () => context.pushNamed(RoutesList.auth.name),
           ),
           const CommonRouteViewer(),
         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navigator_comparison/go_router_app/domain/image_view/tappable_image.dart' as go;
 import 'package:navigator_comparison/main.dart';
 import 'package:navigator_comparison/vrouter_app/domain/image_view/tappable_image.dart' as vr;
 
@@ -28,7 +29,7 @@ class CommonImage extends StatelessWidget {
             mainAxisSpacing: 8,
           ),
           children: [
-            for (int i = min; i < max; i++) kWithGoRouter ? Container() : vr.TappableImage(setNumber: i),
+            for (int i = min; i < max; i++) kWithGoRouter ? go.TappableImage(setNumber: i) : vr.TappableImage(setNumber: i),
           ],
         ),
       ),

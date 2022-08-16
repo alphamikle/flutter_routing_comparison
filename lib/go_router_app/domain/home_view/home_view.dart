@@ -19,10 +19,10 @@ class HomeView extends StatelessWidget {
       backgroundColor: Color.lerp(const Color.fromRGBO(248, 150, 30, 1), Colors.white, 0.90),
       body: ListView(
         children: [
-          const CommonImage(),
+          const CommonImage(setNumber: 0),
           CommonButton(
-            title: 'Go to details',
-            onPressed: () => context.goNamed(RoutesList.homeDetails.name),
+            title: 'Go to "${RoutesList.homeDetails.path}"',
+            onPressed: () => context.pushNamed(RoutesList.homeDetails.name),
           ),
           const CommonRouteViewer(),
         ],

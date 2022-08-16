@@ -17,7 +17,7 @@ class NotFoundView extends StatelessWidget {
       backgroundColor: Color.lerp(const Color.fromRGBO(39, 125, 161, 1), Colors.white, 0.90),
       body: ListView(
         children: [
-          const CommonImage(),
+          const CommonImage(setNumber: 5),
           CommonButton(
             title: 'Go to home',
             onPressed: () => context.goNamed(RoutesList.root.path),
