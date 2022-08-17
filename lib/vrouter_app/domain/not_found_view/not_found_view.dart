@@ -20,7 +20,7 @@ class NotFoundView extends StatelessWidget {
           const CommonImage(setNumber: 5),
           CommonButton(
             title: 'Go to home',
-            onPressed: () => context.vRouter.to(RoutesList.root.path),
+            onPressed: () => context.vRouter.to(RoutesList.root.path, isReplacement: true),
           ),
           const CommonRouteViewer(),
         ],

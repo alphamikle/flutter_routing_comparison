@@ -6,10 +6,16 @@ import 'package:navigator_comparison/common/common_route_viewer.dart';
 import 'package:navigator_comparison/vrouter_app/domain/root_view/bloc/root_view_bloc.dart';
 import 'package:navigator_comparison/vrouter_app/domain/root_view/bloc/root_view_event.dart';
 import 'package:navigator_comparison/vrouter_app/domain/root_view/bloc/root_view_state.dart';
+import 'package:navigator_comparison/vrouter_app/service/routing/routes_list.dart';
 import 'package:vrouter/vrouter.dart';
 
 class AuthView extends StatelessWidget {
-  const AuthView({super.key});
+  const AuthView({
+    required this.nextRoute,
+    super.key,
+  });
+
+  final String nextRoute;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +33,7 @@ class AuthView extends StatelessWidget {
               onPressed: state.isAuthorized
                   ? null
                   : () {
-                      context.vRouter.pop();
+                      context.vRouter.to(nextRoute.isEmpty ? RoutesList.root.path : nextRoute, isReplacement: true);
                       context.read<RootViewBloc>().add(const RootViewAuthorizationEvent());
                     },
             ),

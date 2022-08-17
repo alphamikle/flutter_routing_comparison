@@ -73,6 +73,7 @@ class _VRouterAppState extends State<VRouterApp> {
             }
           },
           builder: commonAppBuilder,
+          debugShowCheckedModeBanner: false,
         ),
       ),
     );

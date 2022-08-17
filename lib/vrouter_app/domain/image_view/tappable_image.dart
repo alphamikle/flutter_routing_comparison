@@ -21,7 +21,7 @@ class TappableImage extends StatelessWidget {
       onTap: () => context.vRouter.toNamed(
         RoutesList.imageDetails.name,
         pathParameters: {
-          SegmentsList.imagePath.name: imagePath,
+          ParamsList.imagePath.name: imagePath,
         },
       ),
       child: Hero(
