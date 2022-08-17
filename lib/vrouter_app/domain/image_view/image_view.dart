@@ -14,6 +14,7 @@ class ImageView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Image view'),
+        // leading: BackButton(onPressed: () => context.vRouter.historyBack()),
       ),
       backgroundColor: Color.lerp(const Color.fromRGBO(67, 170, 139, 1), Colors.white, 0.90),
       body: ListView(

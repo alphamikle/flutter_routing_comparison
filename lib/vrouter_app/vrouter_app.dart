@@ -62,10 +62,7 @@ class _VRouterAppState extends State<VRouterApp> {
           scrollBehavior: CommonScrollBehavior(),
           onPop: _onPop,
           onSystemPop: _onPop,
-          routes: routesMapping(
-            rootKey: _key,
-            rootViewBloc: rootViewBloc,
-          ),
+          routes: routesMapping(),
           beforeEnter: (VRedirector vRedirector) async {
             final List<String> names = vRedirector.newVRouterData?.names ?? [];
             if (names.isNotEmpty) {
